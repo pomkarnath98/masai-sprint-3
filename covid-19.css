@@ -5,11 +5,17 @@ body *{
 h1{
     text-align: center;
 }
-h2{
-    text-align: center;
+#worldSummary{
     color: white;
 }
-body>div{
+h2{
+    text-align: center;
+}
+input{
+    width: 400px;
+    margin-left: 35%;
+}
+#greenBox{
     background-color: green;
 }
 .worldSummary{
@@ -47,4 +53,7 @@ body>div{
     float: right;
     font-style: italic;
     color: whitesmoke;
+}
+hr{
+    padding: 0px;
 }
