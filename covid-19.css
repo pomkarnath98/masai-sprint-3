@@ -1,9 +1,50 @@
+body *{
+    margin: 10px;
+    padding: 5px;
+}
 h1{
     text-align: center;
 }
 h2{
     text-align: center;
+    color: white;
 }
 body>div{
     background-color: green;
+}
+.worldSummary{
+    margin-left: 15px;
+    background-color: yellow;
+    width: 14%;
+    height: 100px;
+    border-radius: 10px;
+}
+#newConfirmNum, #newDeathsNum, #totalConfirmNum, #totalDeathsNum{
+    color: red;
+    text-align: center;
+    font-size: 30px;
+}
+#newConfirmText, #newDeathsText, #newRecoveredText, #totalConfirmText, #totalDeathsText, #totalRecoveredText{
+    color: royalblue;
+    text-align: center;
+    font-size: 15px;
+}
+#newRecoveredNum, #totalRecoveredNum{
+    color: rgb(15, 197, 15);
+    text-align: center;
+    font-size: 30px;
+}
+#greenBox{
+    float: left;
+    width: 98%;
+    border-radius: 5px;
+}
+#greenBox>div{
+    float: left;
+}
+#lastUpdatedTime{
+    clear: left;
+    float: right;
+    font-style: italic;
+    color: whitesmoke;
 }
