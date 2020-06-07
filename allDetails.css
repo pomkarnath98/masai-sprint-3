@@ -1,0 +1,28 @@
+body *{
+    padding: 5px;
+}
+h1{
+    text-align: center;
+}
+#searchBox{
+    width: 306px;
+    margin: auto;
+}
+#filter > div{
+    width: 473px;
+    margin: auto;
+}
+button{
+    cursor: pointer;
+}
+table{
+    display: none;
+}
+table,td,th{
+    margin: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table *{
+    text-align: center;
+}

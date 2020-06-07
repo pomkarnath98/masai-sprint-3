@@ -9,13 +9,15 @@
 </head>
 <body>
     <h1>COVID-19 Update</h1>
+    <button style="background-color: green; border: 2px solid royalblue;"><a id="allDetails" href="allDetails.html">Check Status of Your Country in Daily Basis</a></button>
 
     <div id="greenBox"></div>                          
     <hr>
     <div>
-        <h2>Search Your Country</h2>
-        <input placeholder="Search Country..." type="text" name="country" id="country">
-        <button>Search</button>
+        <h2>Search Your Country Summary</h2>
+        <div id="notFound">Not Found!</div>
+        <input placeholder="Search Country..." type="text" name="country" id="country" required>
+        <button id="search">Search</button>
     </div>
 
     <script src="covid-19.js" type="text/javascript"></script>

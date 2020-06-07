@@ -1,8 +1,7 @@
-var url = 'https://api.covid19api.com/'
 var convertedData;
 function loadingData(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", url+'/summary')
+    xhr.open("GET", 'https://api.covid19api.com/summary')
     xhr.send();
     xhr.onload = function(){
         convertedData = JSON.parse(this.response)
@@ -12,7 +11,6 @@ function loadingData(){
 
 function data(){
     document.getElementById('greenBox').innerHTML = ''
-    // console.log(convertedData)
     var summaryDiv = document.querySelector('div')
     var hTwo = document.createElement('h2')
     hTwo.setAttribute('id', 'worldSummary')
@@ -125,30 +123,38 @@ function data(){
 }
 
 function searchCountry(){
+    document.getElementById('notFound').style.display = 'none'
     var country = convertedData.Countries;
-    // console.log(country.length)
     var countryName = document.querySelector('input').value
-    for(var i = 0; i < country.length; i++){
-        if(countryName === 'World'){
-            document.querySelector('input').placeholder = 'Search Country...'
-            data(); 
-        }
-        else if(country[i].Country === countryName){
-            document.querySelector('input').placeholder = 'Search Country or type World for world summery...'
-            document.getElementById('worldSummary').textContent = countryName + ' Summary'
-            document.getElementById('newConfirmNum').textContent = country[i].NewConfirmed
-            document.getElementById('totalConfirmNum').textContent = country[i].TotalConfirmed
-            document.getElementById('newDeathsNum').textContent = country[i].NewDeaths
-            document.getElementById('totalDeathsNum').textContent = country[i].TotalDeaths
-            document.getElementById('newRecoveredNum').textContent = country[i].NewRecovered
-            document.getElementById('totalRecoveredNum').textContent = country[i].TotalRecovered
-            break;
-        }
+    if(countryName === 'World' || countryName === 'world'){
+        document.querySelector('input').value = ''
+        
+        document.querySelector('input').placeholder = 'Search Country...'
+        data(); 
     }
-    document.querySelector('input').value = ''
+    else{
+        for(var i = 0; i < country.length; i++){
+            if(country[i].Country === countryName || country[i].Slug === countryName){
+                document.querySelector('input').value = ''
+
+                document.querySelector('input').placeholder = 'Search Country or type World for world summery...'
+                document.getElementById('worldSummary').textContent = country[i].Country + ' Summary'
+                document.getElementById('newConfirmNum').textContent = country[i].NewConfirmed
+                document.getElementById('totalConfirmNum').textContent = country[i].TotalConfirmed
+                document.getElementById('newDeathsNum').textContent = country[i].NewDeaths
+                document.getElementById('totalDeathsNum').textContent = country[i].TotalDeaths
+                document.getElementById('newRecoveredNum').textContent = country[i].NewRecovered
+                document.getElementById('totalRecoveredNum').textContent = country[i].TotalRecovered
+                break;
+            } 
+            else if(i === country.length-1 && country[i].Country !== countryName){
+                document.getElementById('notFound').style.display = 'block'
+            }
+        } 
+    }
 }
 
 
 window.addEventListener('load', loadingData)
 
-document.querySelector('button').addEventListener('click',searchCountry)
+document.getElementById('search').addEventListener('click',searchCountry)
