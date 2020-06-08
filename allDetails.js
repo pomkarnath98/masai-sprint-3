@@ -24,8 +24,7 @@ function fetchData(){
 function countryData(){
     document.querySelector('tbody').innerHTML = ''
 
-    document.querySelector('tr').textContent = 'COVID-19 Status of Country' + convertedData[0].Country
-    document.querySelector('tr').style.columnSpan = '9'
+    document.querySelector('th').textContent = 'COVID-19 Status of Country ' + convertedData[0].Country
 
     for(var i = 0; i < convertedData.length; i++){
         var tR = document.createElement('tr')
@@ -37,7 +36,7 @@ function countryData(){
 
 
         var newCase = document.createElement('td')
-        if(convertedData[i-1] === undefined){
+        if(convertedData[i-1] === undefined || convertedData[i].Confirmed - convertedData[i-1].Confirmed < 0){
             newCase.textContent = 0
         }
         else
@@ -49,7 +48,7 @@ function countryData(){
 
 
         var newActiveCase = document.createElement('td')
-        if(convertedData[i-1] === undefined){
+        if(convertedData[i-1] === undefined || convertedData[i].Active - convertedData[i-1].Active < 0){
             newActiveCase.textContent = 0
         }
         else
@@ -60,7 +59,7 @@ function countryData(){
         
             
         var newDeathsCase = document.createElement('td')
-        if(convertedData[i-1] === undefined){
+        if(convertedData[i-1] === undefined || convertedData[i].Deaths - convertedData[i-1].Deaths < 0){
             newDeathsCase.textContent = 0
         }
         else
@@ -71,7 +70,7 @@ function countryData(){
                 
                 
         var newRecoveredCase = document.createElement('td')
-        if(convertedData[i-1] === undefined){
+        if(convertedData[i-1] === undefined || convertedData[i].Recovered - convertedData[i-1].Recovered < 0){
             newRecoveredCase.textContent = 0
         }
         else
